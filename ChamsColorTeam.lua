@@ -1,8 +1,22 @@
+_G.DisableESP = function()
+    settings_tbl.ESP_Enabled = false
+    settings_tbl.Chams = false
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player.Character then
+            for _, v in ipairs(player.Character:GetChildren()) do
+                if v:IsA("Highlight") then
+                    v:Destroy()
+                end
+            end
+        end
+    end
+end
+
 local dwEntities = game:GetService("Players")
 local dwLocalPlayer = dwEntities.LocalPlayer 
 local dwRunService = game:GetService("RunService")
 
-local settings_tbl = {
+settings_tbl = { -- Теперь глобальная таблица
     ESP_Enabled = true,
     ESP_TeamCheck = false,
     Chams = true,
